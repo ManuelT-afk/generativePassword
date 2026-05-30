@@ -29,5 +29,38 @@
       <input type="text" id="resultado" readonly />
     </section>
   </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const button = document.getElementById('btn-generar');
+      const inputLength = document.getElementById('longitud');
+      const selectSpecial = document.getElementById('especiales');
+      const resultField = document.getElementById('resultado');
+
+      const parseYesNo = (value) => String(value).trim().toLowerCase() === 'sí' || String(value).trim().toLowerCase() === 'si';
+
+      button.addEventListener('click', async () => {
+        const length = Number(inputLength.value) || 12;
+        const useSymbols = parseYesNo(selectSpecial.value);
+
+        if (window.pywebview && window.pywebview.api && window.pywebview.api.generate_password) {
+          try {
+            resultField.value = await window.pywebview.api.generate_password(length, useSymbols);
+          } catch (error) {
+            resultField.value = 'Error generando contraseña';
+            console.error(error);
+          }
+        } else {
+          // Fallback local JS generator cuando no se ejecuta dentro de pywebview.
+          const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789' + (useSymbols ? '!@#$%&*()_+-=[]{}|;:,.<>?/' : '');
+          let password = '';
+          for (let i = 0; i < length; i++) {
+            password += chars.charAt(Math.floor(Math.random() * chars.length));
+          }
+          resultField.value = password;
+        }
+      });
+    });
+  </script>
 </body>
 </html>
