@@ -120,20 +120,94 @@
       flex-wrap: wrap;
     }
 
-    @media (max-width: 540px) {
+    @media (max-width: 900px) {
       .container {
-        padding: 24px;
+        width: min(100%, 560px);
+        padding: 28px;
       }
+
+      .row {
+        gap: 14px;
+      }
+
+      .row input,
+      .row select,
+      .row button {
+        min-width: 160px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 14px;
+
+      }
+
+      .container {
+        width: 100%;
+        max-width: 420px;
+        padding: 18px;
+        gap: 16px;
+      }
+
+      h1 {
+        font-size: 1.9rem;
+      }
+
       .row {
         flex-direction: column;
         align-items: stretch;
       }
+
       .row input,
       .row select,
       .row button {
         min-width: 100%;
       }
+
+      .row input,
+      .row select {
+        padding: 10px 12px;
+      }
+
+      .row button {
+        padding: 10px 12px;
+      }
+
       .action-group {
         flex-direction: column;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .container {
+        padding: 16px;
+        border-radius: 16px;
+      }
+
+      .row {
+        gap: 10px;
+      }
+
+      .row label,
+      .row p,
+      .row b {
+        min-width: auto;
+        font-size: 0.92rem;
+      }
+
+      .row input,
+      .row select,
+      .row button {
+        padding: 9px 10px;
+        font-size: 0.92rem;
+      }
+
+      .row button {
+        min-height: 38px;
+      }
+
+      .action-group {
+        gap: 10px;
       }
     }
