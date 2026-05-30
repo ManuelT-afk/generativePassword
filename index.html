@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generador de Contraseñas</title>
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+  <main class="container">
+    <h1>Bienvenido</h1>
+
+    <section class="row">
+      <b>¿Cuántos caracteres requerirás?</b>
+      <input type="number" id="longitud" value="12" min="8" max="64" />
+    </section>
+
+    <section class="row">
+      <p>¿Será con caracteres especiales?</p>
+      <select id="especiales">
+        <option>Sí</option>
+        <option>No</option>
+      </select>
+    </section>
+
+    <section class="row action-group">
+      <button id="btn-generar">Generar password</button>
+      <input type="text" id="resultado" readonly />
+    </section>
+  </main>
+</body>
+</html>
